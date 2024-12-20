@@ -1,0 +1,115 @@
+---
+import { Image } from "astro:assets";
+import headerImg from "@/assets/img-header.jpg";
+import thumbnail from "@/assets/thumb-itou.jpg";
+---
+
+<section class="profile-section">
+  <div class="profile-header">
+    <Image
+      class="profile-header-img animate__animated animate__fadeInUp"
+      src={headerImg}
+      alt=""
+    />
+    <Image
+      class="profile-img animate__animated animate__fadeInUp"
+      src={thumbnail}
+      alt=""
+    />
+  </div>
+
+  <h2 class="heading-lv2 animate__animated animate__fadeInUp">Profile</h2>
+  <dl class="profile-info animate__animated animate__fadeInUp">
+    <div class="profile-info-item">
+      <dt class="profile-info-title">Name:</dt>
+      <dd class="profile-info-text">儚ョいとう。/ Hakanayo-Itou.</dd>
+    </div>
+    <div class="profile-info-item">
+      <dt class="profile-info-title">Birthday:</dt>
+      <dd class="profile-info-text">xxxx / xx / xx</dd>
+    </div>
+    <div class="profile-info-item">
+      <dt class="profile-info-title">SNS:</dt>
+      <dd class="profile-info-text">
+        <a
+          href="https://x.com/itou_i10"
+          target="_blank"
+          rel="noopener noreferrer">X (@itou_i10)</a
+        >
+      </dd>
+    </div>
+  </dl>
+
+  <div class="profile-text-wrapper animate__animated animate__fadeInUp">
+    <p class="base-text">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste accusamus
+      veritatis dignissimos qui beatae a, id magni, similique, blanditiis
+      voluptate consequatur vero vel nostrum quo doloribus tenetur? Eveniet,
+      quod. Deserunt?
+    </p>
+    <p class="base-text">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste accusamus
+      veritatis dignissimos qui beatae a, id magni, similique, blanditiis
+      voluptate consequatur vero vel nostrum quo doloribus tenetur? Eveniet,
+      quod. Deserunt?
+    </p>
+  </div>
+</section>
+
+<style>
+  /* profile section */
+  .profile-section {
+    max-width: var(--container-width);
+    padding: 0 var(--container-padding);
+    margin: 0 auto var(--spacing-large);
+
+    @media screen and (min-width: 992px) {
+      margin: var(--spacing-large) auto;
+    }
+  }
+
+  .profile-header-img {
+    height: clamp(200px, 30vw, 300px);
+    border-radius: var(--border-radius);
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .profile-img {
+    border-radius: 50%;
+    width: clamp(150px, 20vw, 200px);
+    height: clamp(150px, 20vw, 200px);
+    border: 6px solid var(--color-primary);
+    margin: -4rem auto 1rem;
+
+    @media screen and (min-width: 992px) {
+      border: 8px solid var(--color-primary);
+      width: clamp(150px, 20vw, 200px);
+      height: clamp(150px, 20vw, 200px);
+      margin: calc(-1 * var(--spacing-large)) var(--spacing-base)
+        var(--spacing-base);
+    }
+  }
+
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+
+    .profile-info-item {
+      display: inline-flex;
+      gap: 0.5em;
+
+      &:first-child {
+        margin-top: 2em;
+      }
+      &:last-child {
+        margin-bottom: 2em;
+      }
+
+      .profile-info-title {
+        font-weight: var(--font-weight-bold);
+      }
+    }
+  }
+</style>

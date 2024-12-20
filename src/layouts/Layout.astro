@@ -1,22 +1,124 @@
+---
+import "animate.css";
+import "@/assets/style.css";
+---
+
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>ITOU I10 Site</title>
+  </head>
+  <body>
+    <div class="login-wrapper" style="display: none;">
+      <label for="password" class="login-label">パスワード</label>
+      <input
+        type="password"
+        class="login-input"
+        placeholder="パスワード"
+        id="password"
+      />
+      <button class="login-button">ログイン</button>
+    </div>
+    <div class="content-wrapper" style="display: none;">
+      <slot />
+    </div>
+  </body>
 </html>
 
+<script>
+  const CORRECT_PASSWORD = "itou_i10";
+  const loginWrapper = document.querySelector(".login-wrapper");
+  const contentWrapper = document.querySelector(".content-wrapper");
+  const passwordInput = document.querySelector(".login-input");
+  const loginButton = document.querySelector(".login-button");
+
+  // ページ読み込み時に即座に判定
+  document.addEventListener("DOMContentLoaded", () => {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    if (isLoggedIn === "true") {
+      showContent();
+    } else {
+      showLogin();
+    }
+  });
+
+  // 以下は既存のコードと同じ
+  loginButton?.addEventListener("click", handleLogin);
+  passwordInput?.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      handleLogin();
+    }
+  });
+
+  function handleLogin() {
+    const password = passwordInput.value;
+    if (password === CORRECT_PASSWORD) {
+      localStorage.setItem("isLoggedIn", "true");
+      showContent();
+    } else {
+      passwordInput.classList.add("animate__animated", "animate__shakeX");
+      setTimeout(() => {
+        passwordInput.classList.remove("animate__animated", "animate__shakeX");
+      }, 1000);
+    }
+  }
+
+  function showContent() {
+    if (loginWrapper) loginWrapper.style.display = "none";
+    if (contentWrapper) {
+      contentWrapper.style.display = "block";
+      contentWrapper.classList.add("animate__animated", "animate__fadeIn");
+    }
+  }
+
+  function showLogin() {
+    if (loginWrapper) loginWrapper.style.display = "flex";
+    if (contentWrapper) contentWrapper.style.display = "none";
+  }
+</script>
+
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  .login-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: #fff;
+    z-index: 1000;
+  }
+
+  .login-input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .login-button {
+    padding: 10px 20px;
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-weight: var(--font-weight-bold);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .login-button:hover {
+    background: var(--color-accent);
+  }
+
+  .login-label {
+    margin-bottom: 10px;
+  }
 </style>

@@ -1,0 +1,110 @@
+---
+import { Image } from "astro:assets";
+
+import gallery01 from "@/assets/img-item-01.jpg";
+import gallery02 from "@/assets/img-item-02.jpg";
+import gallery03 from "@/assets/img-item-03.jpg";
+import gallery04 from "@/assets/img-item-04.jpg";
+---
+
+<section class="gallery-child-section">
+  <h3 class="heading-lv3 animate__animated animate__fadeInUp">
+    Recent gallery
+  </h3>
+  <div class="gallery-recent-gallery">
+    <div
+      class="gallery-recent-gallery-item animate__animated animate__fadeInUp"
+    >
+      <Image
+        class="gallery-recent-gallery-item-img js-parallax-recent-gallery"
+        src={gallery01}
+        width={1600}
+        height={900}
+        alt=""
+      />
+    </div>
+    <div
+      class="gallery-recent-gallery-item animate__animated animate__fadeInUp"
+    >
+      <Image
+        class="gallery-recent-gallery-item-img js-parallax-recent-gallery"
+        src={gallery02}
+        width={1600}
+        height={900}
+        alt=""
+      />
+    </div>
+    <div
+      class="gallery-recent-gallery-item animate__animated animate__fadeInUp"
+    >
+      <Image
+        class="gallery-recent-gallery-item-img js-parallax-recent-gallery"
+        src={gallery03}
+        width={1600}
+        height={900}
+        alt=""
+      />
+    </div>
+    <div
+      class="gallery-recent-gallery-item animate__animated animate__fadeInUp"
+    >
+      <Image
+        class="gallery-recent-gallery-item-img js-parallax-recent-gallery"
+        src={gallery04}
+        width={1600}
+        height={900}
+        alt=""
+      />
+    </div>
+  </div>
+  <div class="gallery-recent-text-wrapper animate__animated animate__fadeInUp">
+    <h4 class="heading-lv4">Title</h4>
+    <p class="base-text">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+    </p>
+  </div>
+</section>
+
+<style>
+  .gallery-recent-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+
+    .gallery-recent-gallery-item-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      aspect-ratio: 16 / 12;
+    }
+  }
+
+  .gallery-recent-text-wrapper {
+    margin-top: 1em;
+
+    .heading-lv4 {
+      margin-bottom: 0.5em;
+    }
+  }
+</style>
+
+<script>
+  // simple parallaxの設定を修正
+  import SimpleParallax from "simple-parallax-js/vanilla";
+
+  const recentGalleryImages = document.querySelectorAll(
+    ".js-parallax-recent-gallery",
+  );
+  new SimpleParallax(recentGalleryImages, {
+    delay: 1,
+    scale: 1.5,
+    transition: "cubic-bezier(0,0,0,1)",
+  });
+</script>

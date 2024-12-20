@@ -1,0 +1,98 @@
+---
+import { Image } from "astro:assets";
+
+import gallery05 from "@/assets/img-item-05.jpg";
+import gallery06 from "@/assets/img-item-06.jpg";
+import gallery07 from "@/assets/img-item-07.jpg";
+
+const galleryItems = [gallery05, gallery06, gallery07];
+---
+
+<section class="gallery-child-section">
+  <h3 class="heading-lv3 animate__animated animate__fadeInUp">Other gallery</h3>
+  <p class="base-text animate__animated animate__fadeInUp">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+  </p>
+  <div class="swiper animate__animated animate__fadeInUp">
+    <div class="swiper-wrapper">
+      {
+        galleryItems.map((item) => (
+          <div class="swiper-slide">
+            <Image
+              class="swiper-slide-img js-parallax-other-gallery"
+              src={item}
+              width={1600}
+              height={900}
+              alt=""
+            />
+            <div class="swiper-slide-text-wrapper">
+              <h4
+                class="heading-lv4"
+                style="position: absolute; bottom: 10px; left: 10px; right: 0; margin: 0;  color: #fff;"
+              >
+                Title
+              </h4>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .swiper {
+    width: 100%;
+    height: auto;
+
+    @media screen and (min-width: 992px) {
+      height: 500px;
+    }
+
+    @media screen and (min-width: 992px) {
+      height: 500px;
+    }
+  }
+
+  .swiper-slide-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    aspect-ratio: 16 / 12;
+  }
+</style>
+
+<script>
+  import Swiper from "swiper";
+  import { EffectFade, Autoplay } from "swiper/modules";
+  import "swiper/css";
+  import "swiper/css/navigation";
+  import "swiper/css/pagination";
+
+  const swiper = new Swiper(".swiper", {
+    modules: [EffectFade, Autoplay],
+    effect: "fade",
+    fadeEffect: {
+      crossFade: true,
+    },
+    speed: 2000,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+  });
+
+  // simple parallaxの設定を修正
+  import SimpleParallax from "simple-parallax-js/vanilla";
+
+  const otherGalleryImages = document.querySelectorAll(
+    ".js-parallax-other-gallery",
+  );
+  new SimpleParallax(otherGalleryImages, {
+    delay: 1,
+    scale: 1.25,
+    transition: "cubic-bezier(0,0,0,1)",
+  });
+</script>

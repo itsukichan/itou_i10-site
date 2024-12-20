@@ -1,11 +1,47 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import ProfileSection from "@/components/ProfileSection.astro";
+import GallerySection from "@/components/GallerySection.astro";
 ---
 
 <Layout>
-	<Welcome />
+  <header class="header">
+    <h1 class="heading-lv1">Itou Portfolio Site</h1>
+  </header>
+
+  <main class="main-container">
+    <ProfileSection />
+    <GallerySection />
+  </main>
+
+  <footer class="footer">
+    <p class="footer-text">© 2024 Itou Portfolio Site</p>
+  </footer>
 </Layout>
+
+<style>
+  /* main layout */
+  .header {
+    background-color: var(--color-background-dark);
+    color: var(--color-text-light);
+    position: sticky;
+    top: 0;
+    z-index: var(--z-index-header);
+    text-align: center;
+  }
+
+  .main-container {
+  }
+
+  .footer {
+    width: 100%;
+    background-color: var(--color-background-dark);
+    padding: var(--spacing-small);
+
+    .footer-text {
+      font-size: var(--font-size-small);
+      text-align: center;
+      color: var(--color-text-light);
+    }
+  }
+</style>

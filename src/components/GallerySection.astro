@@ -1,0 +1,24 @@
+---
+import RecentGallery from "@/components/RecentGallery.astro";
+import OtherGallery from "@/components/OtherGallery.astro";
+import AllGallery from "@/components/AllGallery.astro";
+---
+
+<section class="gallery-section">
+  <h2 class="heading-lv2 animate__animated animate__fadeInUp">Gallery</h2>
+  <RecentGallery />
+  <OtherGallery />
+  <AllGallery />
+</section>
+
+<style>
+  .gallery-section {
+    max-width: var(--container-width);
+    padding: 0 var(--container-padding);
+    margin: var(--spacing-large) auto;
+  }
+
+  .gallery-child-section {
+    margin-bottom: var(--spacing-large);
+  }
+</style>
