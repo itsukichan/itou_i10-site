@@ -7,7 +7,11 @@ import "@/assets/style.css";
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
     <link
       rel="icon"
       type="image/svg+xml"
@@ -86,6 +90,10 @@ import "@/assets/style.css";
 </script>
 
 <style>
+  input[type="password"] {
+    font-size: 16px; /* 16px以上にすることで、iOSでの自動ズームを防ぐ */
+    -webkit-text-size-adjust: 100%; /* テキストサイズの自動調整を無効化 */
+  }
   .login-wrapper {
     position: fixed;
     top: 0;
