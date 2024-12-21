@@ -67,8 +67,8 @@ const galleryItems = [gallery05, gallery06, gallery07];
   import Swiper from "swiper";
   import { EffectFade, Autoplay } from "swiper/modules";
   import "swiper/css";
-  import "swiper/css/navigation";
-  import "swiper/css/pagination";
+  import "swiper/css/effect-fade"; // フェードエフェクトのCSSを追加
+  import "swiper/css/autoplay"; // オートプレイのCSSを追加
 
   const swiper = new Swiper(".swiper", {
     modules: [EffectFade, Autoplay],
@@ -82,6 +82,8 @@ const galleryItems = [gallery05, gallery06, gallery07];
       delay: 5000,
       disableOnInteraction: false,
     },
+    observer: true, // DOMの変更を監視
+    observeParents: true, // 親要素の変更も監視
   });
 
   // simple parallaxの設定を修正

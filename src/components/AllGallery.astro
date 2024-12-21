@@ -71,17 +71,3 @@ const allGalleryItems = [
     object-position: center;
   }
 </style>
-
-<script>
-  // simple parallaxの設定を修正
-  import SimpleParallax from "simple-parallax-js/vanilla";
-
-  const allGalleryImages = document.querySelectorAll(
-    ".js-parallax-all-gallery",
-  );
-  new SimpleParallax(allGalleryImages, {
-    delay: 1,
-    scale: 1.5,
-    transition: "cubic-bezier(0,0,0,1)",
-  });
-</script>

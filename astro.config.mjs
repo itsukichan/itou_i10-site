@@ -1,9 +1,7 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 
-// https://astro.build/config
 export default defineConfig({
-  integrations: [],
-  site: "https://itsukichan.github.io",
-  base: "/itou_i10-site/",
+  site: "https://あなたのユーザー名.github.io",
+  base: "/itou_i10-site", // スラッシュの重複を削除
 });
